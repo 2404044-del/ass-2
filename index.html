@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Registration System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Registration System</h1>
+      <p>One-table “database” (localStorage) • GET / POST / DELETE</p>
+    </header>
+
+    <section class="card">
+      <h2>Add Registration (POST)</h2>
+
+      <form id="regForm" autocomplete="off">
+        <div class="grid">
+          <label>
+            System Type
+            <select id="systemType" required>
+              <option value="">Select…</option>
+              <option value="E-Commerce">E-Commerce</option>
+              <option value="Health">Health Institution</option>
+              <option value="Ticketing">Ticketing</option>
+              <option value="Student">Student Registration</option>
+            </select>
+          </label>
+
+          <label>
+            Full Name
+            <input id="fullName" type="text" placeholder="e.g. Alex Kim" required />
+          </label>
+
+          <label>
+            Email
+            <input id="email" type="email" placeholder="e.g. alex@email.com" required />
+          </label>
+
+          <label>
+            Phone
+            <input id="phone" type="tel" placeholder="e.g. 07xx xxx xxx" />
+          </label>
+
+          <label>
+            Unique ID (optional)
+            <input id="uniqueId" type="text" placeholder="e.g. Adm No / Ticket No / Patient No" />
+          </label>
+
+          <label>
+            Notes (optional)
+            <input id="notes" type="text" placeholder="Any extra info" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Save Registration</button>
+          <button type="button" id="clearAll" class="danger">Clear ALL (Delete table)</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <h2>Registrations (GET)</h2>
+
+        <div class="tools">
+          <select id="filterType" title="Filter by system type">
+            <option value="ALL">All Types</option>
+            <option value="E-Commerce">E-Commerce</option>
+            <option value="Health">Health Institution</option>
+            <option value="Ticketing">Ticketing</option>
+            <option value="Student">Student Registration</option>
+          </select>
+
+          <input id="search" type="search" placeholder="Search name/email/phone/id..." />
+          <button id="exportBtn" type="button">Export JSON</button>
+        </div>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Unique ID</th>
+              <th>Notes</th>
+              <th>Action (DELETE)</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+          </tbody>
+        </table>
+      </div>
+
+      <p class="small">
+        Tip: This is stored in your browser. If you open it on another device/browser, it will have separate data.
+      </p>
+    </section>
+
+    <footer>
+      <p class="small">Made for GitHub Pages • No backend required</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
